@@ -127,6 +127,14 @@ public:
         }
         return matriceAdiacenza[indiceSorgente][indiceDestinazione] != INF;
     }
+int arcoMinimo=
+grafo.arcoconpesominore(5);
+if(Arcominimo !=-1) {
+    std::cout <<"L'arco più piccolo con il peso minore dei 5 è:"<<arcominimo<< std::endl;}
+    else{
+        std::cout <<"non ci sono nodi uscenti."<<std::endl;
+    }
+return 0;
     
 private:
     // Trova l'indice di un nodo
@@ -139,3 +147,47 @@ private:
         return -1;
     }
 };
+int main() {
+    Grafo grafo;
+
+
+    grafo.aggiungiNodo("solo leveling");
+    grafo.aggiungiNodo("tower of good");
+    grafo.aggiungiNodo("demon slayer");
+    grafo.aggiungiNodo("one piece");
+    grafo.aggiungiNodo("dragon ball");
+
+
+    grafo.aggiungiArco("solo leveling", "Tower of good", 200);
+    grafo.aggiungiArco("demon slayer", "one piece", 354);
+    grafo.aggiungiArco("dragon ball", "solo leveling", 519);
+    grafo.aggiungiArco("tower of good", "one piece", 550);
+    grafo.aggiungiArco("demon slayer", "solo leveling", 554);
+    grafo.aggiungiArco("dragon ball", "one piece", 1139);
+
+    
+    grafo.stampaGrafo();
+
+    
+    std::cout << "Esiste nodo 'solo leveling': " << grafo.esisteNodo("solo leveling") << std::endl;
+
+    
+    std::vector<std::string> adiacenti = grafo.nodiAdiacenti("tower of good");
+    std::cout << "Nodi adiacenti a 'tower of good': ";
+    for (const std::string& nodo : adiacenti) {
+        std::cout << nodo << " ";
+    }
+    std::cout << std::endl;
+
+
+    std::cout << "Esiste arco tra "tower of good" e 'solo leveling': " << grafo.esisteArco("tower of good", "solo leveling") << std::endl;
+
+    grafo.rimuoviArco("tower of good", "solo leveling");
+
+    
+    grafo.rimuoviNodo("demon slayer");
+
+    grafo.stampaGrafo();
+
+    return 0;
+}
